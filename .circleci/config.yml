@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    environment:
-      CC_TEST_REPORTER_ID: fc308ed37e749d66e41ddde4d2a27765b6ffeef87e3e8e254c0111ed5180d66b
-
     docker:
       - image: gobble/python:3.6
 
@@ -18,7 +15,6 @@ jobs:
           command: |
             echo 'export DOCKER_IMAGE=gobble/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1' >> $BASH_ENV
             echo 'export SHELL_SCRIPT_TO_RUN_APP=run_app.sh' >> $BASH_ENV
-            # echo 'export CC_TEST_REPORTER_ID=fc308ed37e749d66e41ddde4d2a27765b6ffeef87e3e8e254c0111ed5180d66b' >> $BASH_ENV
 
       - run:
           name: Setup Code Climate test-reporter
