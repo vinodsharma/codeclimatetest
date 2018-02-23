@@ -42,4 +42,4 @@ jobs:
               'source $VENV_DIR/bin/activate; \
               ./cc-test-reporter before-build; \
               pytest --cov=src --cov-report=xml tests/test_*.py; \
-              ./cc-test-reporter after-build --coverage-input-type converage.py  --exit-code $?'
+              ./cc-test-reporter after-build --coverage-input-type coverage.py  --exit-code $?'
