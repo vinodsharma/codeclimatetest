@@ -15,6 +15,7 @@ jobs:
           command: |
             echo 'export DOCKER_IMAGE=gobble/$CIRCLE_PROJECT_REPONAME:$CIRCLE_SHA1' >> $BASH_ENV
             echo 'export SHELL_SCRIPT_TO_RUN_APP=run_app.sh' >> $BASH_ENV
+            echo 'export CC_TEST_REPORTER_ID=fc308ed37e749d66e41ddde4d2a27765b6ffeef87e3e8e254c0111ed5180d66b' >> $BASH_ENV
 
       - run:
           name: Building Docker Image
@@ -29,4 +30,4 @@ jobs:
               --env AWS_SECRET_ACCESS_KEY \
             -it $DOCKER_IMAGE /bin/bash -c \
               'source $VENV_DIR/bin/activate; \
-              pytest tests/test_*.py'
+              pytest --cov=src tests/test_*.py'
